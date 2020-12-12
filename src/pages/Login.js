@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Message, Icon } from "semantic-ui-react";
 import { gql, useMutation } from "@apollo/client";
 
 import { useForm } from "../util/hooks";
@@ -33,7 +33,6 @@ const Login = (props) => {
       props.history.push("/");
     },
     onError(err) {
-      // console.log(err.graphQLErrors[0].extensions.exception.errors);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
     variables: values,
@@ -84,6 +83,10 @@ const Login = (props) => {
           </ul>
         </div>
       )}
+      <Message warning>
+        <Icon name="question" />
+            Forgot password?
+      </Message>
     </div>
   );
 };
