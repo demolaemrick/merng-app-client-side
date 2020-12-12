@@ -23,6 +23,7 @@ const LikeButton = ({ user, post: { id, likes, likeCount } }) => {
   const [liked, setLiked] = useState(false);
   const [likePost] = useMutation(LIKE_POST_MUTATION, {
     variables: { postId: id },
+    errorPolicy: 'ignore' //this prevents graphql error when user tries to like a post without logged in
   });
 
   useEffect(() => {
@@ -45,7 +46,7 @@ const LikeButton = ({ user, post: { id, likes, likeCount } }) => {
     )
   ) : (
     <Button as={Link} to="/login" color="teal" basic>
-      <Icon name="heart" />
+      <Icon name="heart" /> 
     </Button>
   );
   return (
