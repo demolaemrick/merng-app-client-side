@@ -41,6 +41,9 @@ function authReducer(state, action) {
 function AuthProvider(props) {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+
+  //more like actions when using redux
+  
   function login(userData) {
     localStorage.setItem("Token", userData.token);
     dispatch({
