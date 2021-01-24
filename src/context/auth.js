@@ -12,8 +12,9 @@ if (localStorage.getItem("Token")) {
     initialState.user = decodedToken;
   }
 }
-
+// Once you declare your state using either useState or useReducer, you’ll need to lift it up to become global state using React Context. 
 const AuthContext = createContext({
+  //default values
   user: null,
   login: (userData) => {},
   logout: () => {},
