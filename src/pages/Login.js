@@ -3,7 +3,7 @@ import { Form, Button, Message, Icon } from "semantic-ui-react";
 import { gql, useMutation } from "@apollo/client";
 
 import { useForm } from "../util/hooks";
-import { AuthContext } from '../context/auth'
+import { AuthContext } from "../context/auth";
 
 const LOGIN_USER = gql`
   mutation login($username: String!, $password: String!) {
@@ -19,7 +19,7 @@ const LOGIN_USER = gql`
 
 const Login = (props) => {
   const [errors, setErrors] = useState({});
-  const context = useContext(AuthContext)
+  const context = useContext(AuthContext);
 
   const { changeHandler, submitHandler, values } = useForm(loginUserCallback, {
     username: "",
@@ -27,9 +27,8 @@ const Login = (props) => {
   });
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(_, { data: { login: userData }}) {
-    //   console.log(result.data.login);
-      context.login(userData)
+    update(_, { data: { login: userData } }) {
+      context.login(userData);
       props.history.push("/");
     },
     onError(err) {
@@ -85,7 +84,7 @@ const Login = (props) => {
       )}
       <Message warning>
         <Icon name="question" />
-            Forgot password?
+        Forgot password?
       </Message>
     </div>
   );
